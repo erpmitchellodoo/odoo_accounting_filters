@@ -1,26 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates>
     <t t-name="account_reports.AccountReportFilterAccounts">
-        <Dropdown togglerClass="'btn btn-secondary'">
-            <t t-set-slot="toggler">
+        <Dropdown
+                menuClass="'account_report_filter account'"
+        >
+            <button class="btn btn-secondary">
                 <i class="fa fa-folder-open me-1"/>Accounts
+            </button>
+
+            <t t-set-slot="content">
+                <div class="dropdown-item gap-2 align-items-center">
+                    <label>Accounts</label>
+                    <MultiRecordSelector t-props="getMultiRecordSelectorProps('account.account', 'account_ids')"/>
+
+                </div>
+
             </t>
-            <div class="dropdown-item">
-                <label>Accounts</label>
-                <MultiRecordSelector t-props="getMultiRecordSelectorProps('account.account', 'account_ids')"/>
-            </div>
         </Dropdown>
+
     </t>
     <t t-inherit="account_reports.AccountReportFiltersCustomizable" t-inherit-mode="extension">
         <xpath expr="//div[@id='filter_rounding_unit']" position="after">
             <t t-if="'account' in controller.options">
-                <div id="filter_account" class="filter_account">
-                    <t t-call="account_reports.AccountReportFilterAccounts"/>
-                </div>
+                <t t-call="account_reports.AccountReportFilterAccounts"/>
             </t>
+
         </xpath>
     </t>
+    <t t-inherit="account_reports.PartnerLedgerFilters" t-inherit-mode="extension">
+        <xpath expr="//div[@id='filter_rounding_unit']" position="after">
+            <t t-if="'account' in controller.options">
+                <t t-call="account_reports.AccountReportFilterAccounts"/>
+            </t>
 
+        </xpath>
+    </t>
     <t t-inherit="account_reports.JournalReportFilters" t-inherit-mode="extension">
         <xpath expr="//div[@id='filter_rounding_unit']" position="after">
             <t t-if="'account' in controller.options">
