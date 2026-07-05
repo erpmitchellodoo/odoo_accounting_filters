@@ -8,7 +8,7 @@
     'company': 'Mitchel Admin',
     'maintainer': 'erpmitchellodoo@gmail.com',
     'version': '17.0.1.1.1',
-    'price':'55.59',
+    'price':'00.00',
     'currency':'USD',
     'depends': ['account_accountant','account_reports'],
     'data': [
