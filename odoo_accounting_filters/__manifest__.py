@@ -8,8 +8,6 @@
     'company': 'Mitchel_Admin',
     'maintainer': 'erpmitchellodoo@gmail.com',
     'version': '18.0.1.1.1',
-    'price':'55.59',
-    'currency':'USD',
     'depends': ['account_accountant','account_reports'],
     'data': [
        'views/account_report_view.xml',
